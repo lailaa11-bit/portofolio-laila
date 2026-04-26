@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laila Mualifah | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Pink-nya udah diganti ke Soft Pastel biar adem */
+            --primary: #f8c8dc;   /* Soft Pastel Pink */
+            --secondary: #fef1f6; /* Rose White */
+            --dark: #0b0b0b;
+            --glass: rgba(248, 200, 220, 0.1);  /* Dari 0.05 ke 0.1 */
+--border: rgba(248, 200, 220, 0.25); /* Dari 0.15 ke 0.25 */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: var(--dark); color: white; overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* --- MODIFIKASI BACKGROUND GELEMBUNG LOVE --- */
+        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, #160d10 0%, #0b0b0b 100%); z-index: -3; }
+        
+        .blob { position: fixed; width: 450px; height: 450px; background: var(--primary); filter: blur(150px); border-radius: 50%; opacity: 0.08; z-index: -2; animation: float 25s infinite alternate; }
+        .blob-2 { position: fixed; bottom: -100px; right: -100px; width: 400px; height: 400px; background: var(--secondary); filter: blur(130px); border-radius: 50%; opacity: 0.06; z-index: -2; animation: float 18s infinite alternate-reverse; }
+        
+        @keyframes float { 
+            from { transform: translate(-20%, -20%) scale(1); } 
+            to { transform: translate(100%, 80%) scale(1.2); } 
+        }
+
+        .love-container { 
+            position: fixed; width: 100%; height: 100%; top: 0; left: 0; 
+            z-index: -1; pointer-events: none; overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--primary);
+            opacity: 0;
+            font-size: 20px;
+            filter: drop-shadow(0 0 5px var(--primary)); 
+            animation: loveRise infinite linear;
+        }
+
+        @keyframes loveRise {
+    0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.7; } /* Dinaikin lagi biar gak terlalu transparan */
+    50% { transform: translateY(50vh) translateX(20px) rotate(20deg); }
+    80% { opacity: 0.7; }
+    100% { transform: translateY(-10vh) translateX(-20px) rotate(-20deg); opacity: 0; }
+}
+
+        nav { position: fixed; width: 100%; top: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(15px); padding: 20px; text-align: center; z-index: 1000; border-bottom: 1px solid var(--border); }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+        header {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/laila.jpg'); 
+            background-size: cover; background-position: center; border-bottom: 2px solid var(--primary);
+        }
+        header h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        header span { color: var(--primary); }
+        #typing-text { font-size: 1.2rem; color: #ccc; min-height: 1.5em; max-width: 800px; padding: 0 20px; }
+
+        section { padding: 100px 20px; max-width: 1000px; margin: auto; }
+        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--primary); text-transform: uppercase; letter-spacing: 3px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .card { background: var(--glass); border: 1px solid var(--border); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; transform: translateY(30px); }
+        .card.show { opacity: 1; transform: translateY(0); }
+        .card:hover { transform: translateY(-10px) scale(1.02); border-color: var(--primary); box-shadow: 0 15px 35px rgba(248, 200, 220, 0.15); }
+
+        .card b { color: var(--secondary); font-size: 1.2rem; display: block; margin-bottom: 10px; }
+        .sub { font-size: 0.85rem; color: #888; margin-bottom: 15px; font-style: italic; }
+        p { font-size: 0.95rem; color: #ccc; line-height: 1.6; }
+        ul { padding-left: 20px; color: #ddd; margin-top: 10px; font-size: 0.9rem; }
+        li { margin-bottom: 8px; }
+
+        .skill-item { margin-bottom: 15px; }
+        .bar-bg { background: #222; border-radius: 10px; height: 10px; margin-top: 5px; overflow: hidden; }
+        .bar-fill { background: linear-gradient(90deg, var(--primary), var(--secondary)); height: 100%; border-radius: 10px; transition: 1.5s ease-out; width: 0; }
+
+        footer { text-align: center; padding: 40px; background: #050505; border-top: 1px solid var(--border); }
+        .social-links a { color: white; font-size: 1.5rem; margin: 0 10px; transition: 0.3s; }
+        .social-links a:hover { color: var(--primary); }
+
+        @media (max-width: 768px) { header h1 { font-size: 2.2rem; } }
+    </style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div class="blob"></div>
+<div class="blob-2"></div>
+<div class="love-container" id="love-particles"></div>
+
+<nav>
+    <a href="#pendidikan">Pendidikan</a>
+    <a href="#pengalaman">Pengalaman</a>
+    <a href="#organisasi">Organisasi</a>
+    <a href="#skill">Skill</a>
+</nav>
+
+<header>
+    <h1>Hi, I'm <span>Laila Mualifah</span></h1>
+    <p id="typing-text"></p>
+    <a href="#pendidikan" class="btn" style="margin-top:30px; padding:12px 30px; background:var(--primary); border-radius:30px; color:#000; text-decoration:none; font-weight:600;">Explore My Journey</a>
+</header>
+
+<section id="pendidikan">
+    <h2>Pendidikan</h2>
+    <div class="card">
+        <b>Politeknik Negeri Jember | D4</b>
+        <div class="sub">Teknik Informatika (2024 – Sekarang)</div>
+        <p><strong>Mata Kuliah Relevan:</strong> Konsep Basis Data, Pengembangan Perangkat Lunak, Pemrograman Dasar (Java), Sistem Aplikasi Berbasis Objek, Interaksi Manusia dan Komputer, Sistem Informasi Berbasis Dekstop, Perencanaan Proyek Perangkat Lunak, Manajemen Proyek, Konsep Jaringan Komputer, Sistem Informasi Berbasis Web dan Framework, Manajemen Kualitas Perangkat Lunak, Perawatan Perangkat Lunak, Pengujian Perangkat Lunak.</p>
+    </div>
+    <div class="card" style="margin-top: 20px;">
+        <b>MAN 1 Nganjuk | MIPA</b>
+        <div class="sub">(2021 – 2024)</div>
+        <p><strong>Mata Pelajaran Kejuruan:</strong> TIK, Matematika Umum, Matematika Peminatan, Bahasa Inggris.</p>
+    </div>
+</section>
+
+<section id="pengalaman">
+    <h2>Pengalaman & Proyek</h2>
+    <div class="grid">
+        <div class="card">
+            <i class="fas fa-desktop" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+            <b>UI Designer – Aplikasi Desktop & Study Club</b>
+            <ul>
+                <li>Merancang desain antarmuka untuk aplikasi berbasis desktop dan dashboard manajemen data.</li>
+                <li>Membuat rancangan desain UI/UX kreatif melalui kegiatan study club untuk meningkatkan pengalaman pengguna.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <i class="fas fa-code" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+            <b>Web Designer – UPT BLK Nganjuk</b>
+            <ul>
+                <li>Membantu developer membangun front-end serta back-end sistem.</li>
+                <li>Mengubah proses seleksi manual menjadi platform digital yang efisien dan terorganisir.</li>
+                <li>Merancang antarmuka website sistem seleksi UPT BLK Nganjuk.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <i class="fas fa-bug" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+            <b>Software Tester – SimPelSi</b>
+            <ul>
+                <li>Pengujian fungsionalitas aplikasi pelaporan sampah ilegal untuk mendeteksi bug.</li>
+                <li>Meninjau hasil pengerjaan kelompok lain guna menjaga kualitas dan validitas fitur.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="organisasi">
+    <h2>Organisasi & Kepemimpinan</h2>
+    
+    <div class="card">
+        <b>Ketua Komunitas | Informatics Community Politeknik Negeri Jember PSDKU Nganjuk</b>
+        <ul>
+            <li>Menjadi pemimpin yang mengayomi seluruh anggota dan menjaga kekompakan tim.</li>
+            <li>Memantau kinerja pengurus agar semua tugas dan program kerja selesai tepat waktu.</li>
+            <li>Mengarahkan teman-teman dalam mengelola media sosial dan kegiatan komunitas lainnya.</li>
+            <li>Memastikan suasana organisasi tetap nyaman dan produktif bagi semua anggota.</li>
+        </ul>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+        <b>Divisi PSDM Akademik | Informatics Community</b>
+        <p>Berfokus pada peningkatan kapasitas intelektual, potensi akademik, dan pengembangan <i>soft skill</i> anggota organisasi atau mahasiswa.</p>
+    </div>
+
+    <h2 style="margin-top: 60px; font-size: 1.8rem;">Kepanitiaan</h2>
+    <div class="grid">
+        <div class="card">
+            <b>Sekretaris | Study Club 2025</b>
+            <p>Bertanggung jawab atas pengelolaan administrasi organisasi, penyusunan laporan resmi, serta pengarsipan data secara digital yang terintegrasi.</p>
+        </div>
+        <div class="card">
+            <b>Sie Acara | Bootcamp 2025</b>
+            <p>Merancang konsep kegiatan, menyusun rundown teknis, dan mengelola manajemen waktu agar pelatihan berjalan efisien.</p>
+        </div>
+        <div class="card">
+            <b>Sie Acara | TIF Exhibition 2.0 2025</b>
+            <p>Menyusun konsep pameran teknologi dan mengoordinasikan alur teknis presentasi karya selama acara berlangsung.</p>
+        </div>
+        <div class="card">
+            <b>Koor Sie Perlengkapan | Makrab Jilid 3 2025</b>
+            <p>Memimpin pengadaan logistik, manajemen inventaris peralatan, dan koordinasi vendor untuk kebutuhan lapangan.</p>
+        </div>
+        <div class="card">
+            <b>Sie Konsumsi | TIF Exhibition 3.0 2026</b>
+            <p>Mengatur perencanaan anggaran, distribusi konsumsi, dan manajemen katering untuk seluruh peserta dan panitia.</p>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 25px;">
+        <b>Pelatihan & Pengembangan</b>
+        <ul>
+            <li>LKMM PRA-TD 2024: Manajemen waktu dan keterampilan kepemimpinan.</li>
+            <li>EPT (English Proficiency Test) 2025: Listening, Structure, Reading.</li>
+            <li>Study Club UI/UX 2025: Wireframe, Riset, dan Prototipe user-centered.</li>
+        </ul>
+    </div>
+</section>
+
+<section id="skill">
+    <h2>Keterampilan</h2>
+    <div class="grid">
+        <div class="card">
+            <b>Technical Skills</b>
+            <div class="skill-item"><span>Figma & UI/UX</span><div class="bar-bg"><div class="bar-fill" data-width="90%"></div></div></div>
+            <div class="skill-item"><span>Laravel & PHP</span><div class="bar-bg"><div class="bar-fill" data-width="85%"></div></div></div>
+            <div class="skill-item"><span>Java & Android Studio</span><div class="bar-bg"><div class="bar-fill" data-width="80%"></div></div></div>
+            <div class="skill-item"><span>MySQL</span><div class="bar-bg"><div class="bar-fill" data-width="75%"></div></div></div>
+        </div>
+        <div class="card">
+            <b>Soft Skills & Lainnya</b>
+            <ul>
+                <li>Leadership & Teamwork</li>
+                <li>Problem Solving</li>
+                <li>Manajemen Waktu</li>
+                <li>Bahasa Indonesia (Fasih)</li>
+                <li>Bahasa Inggris (Dasar)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/laila-mualifah-468768404" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:lailaaam00@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p style="margin-top: 20px; color: #666;">© 2026 Laila Mualifah. Built with VS Code.</p>
+</footer>
+
+<script>
+    const loveContainer = document.getElementById('love-particles');
+    const heartIcons = ['❤️', '💖', '💝', '💗', '💓']; 
+    
+    for (let i = 0; i < 20; i++) { 
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+        
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = Math.random() * 15 + 15 + 'px'; 
+        heart.style.animationDuration = Math.random() * 10 + 7 + 's'; 
+        heart.style.animationDelay = Math.random() * 10 + 's';
+        
+        loveContainer.appendChild(heart);
+    }
+
+    const text = "Mahasiswi Teknik Informatika dengan minat besar di bidang Web Development & UI/UX Designer.";
+    let i = 0;
+    function type() {
+        if (i < text.length) {
+            document.getElementById("typing-text").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, 50);
+        }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                const bars = entry.target.querySelectorAll('.bar-fill');
+                bars.forEach(bar => bar.style.width = bar.getAttribute('data-width'));
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+    window.onload = type;
+</script>
+
+</body>
+</html>
