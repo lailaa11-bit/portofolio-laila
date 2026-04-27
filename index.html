@@ -17,6 +17,21 @@
 --border: rgba(248, 200, 220, 0.25); /* Dari 0.15 ke 0.25 */
         }
 
+.ig-preview {
+    width: 100%;        /* FULL KE SAMPING */
+    height: 200px;      /* POTONG TINGGI */
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+/* paksa IG ikut full */
+.instagram-media {
+    width: 100% !important;
+    min-width: 100% !important;
+    margin: 0 !important;
+}
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background: var(--dark); color: white; overflow-x: hidden; scroll-behavior: smooth; }
 
@@ -37,13 +52,33 @@
         }
 
         .heart {
-            position: absolute;
-            color: var(--primary);
-            opacity: 0;
-            font-size: 20px;
-            filter: drop-shadow(0 0 5px var(--primary)); 
-            animation: loveRise infinite linear;
-        }
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 105, 180, 0.5);
+    transform: rotate(45deg);
+    animation: loveRise linear infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 105, 180, 0.5);
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -7px;
+    left: 0;
+}
+
+.heart::after {
+    left: -7px;
+    top: 0;
+}
 
         @keyframes loveRise {
     0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
@@ -59,7 +94,7 @@
 
         header {
             height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('laila.jpg'); 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/laila.jpg'); 
             background-size: cover; background-position: center; border-bottom: 2px solid var(--primary);
         }
         header h1 { font-size: 3.5rem; margin-bottom: 10px; }
@@ -91,6 +126,7 @@
         @media (max-width: 768px) { header h1 { font-size: 2.2rem; } }
     </style>
 </head>
+<script async src="https://www.instagram.com/embed.js"></script>
 <body>
 
 <div class="bg-glow"></div>
@@ -127,55 +163,130 @@
 
 <section id="pengalaman">
     <h2>Pengalaman & Proyek</h2>
-    <div class="grid">
+    <div class="card">
+    <a href="https://pameran-jti.polije.ac.id/product/240/fortune-wash" target="_blank">
+        <img src="assets/awashing.png" alt="Fortune Wash" 
+             style="width:100%; border-radius:10px; margin-bottom:15px;">
+    </a>
+
+    <i class="fas fa-desktop" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+    
+    <b>UI/UX Designer – Fortune Wash (Aplikasi Kasir Desktop)</b>
+
+    <ul>
+        <li>Merancang antarmuka aplikasi kasir untuk UMKM pencucian kendaraan.</li>
+        <li>Mendesain dashboard untuk owner dan karyawan agar mudah digunakan.</li>
+        <li>Mengembangkan pengalaman pengguna pada fitur transaksi, member, dan laporan.</li>
+    </ul>
+
+    <a href="https://pameran-jti.polije.ac.id/product/240/fortune-wash" 
+       target="_blank" 
+       style="display:inline-block; margin-top:10px; color:#f8c8dc; text-decoration:none;">
+       🔗 Lihat Project
+    </a>
+</div>
+<div class="card">
+    <img src="assets/study club.png" alt="Study Club UI/UX" 
+         style="width:100%; border-radius:10px; margin-bottom:15px;">
+
+    <i class="fas fa-users" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+
+    <b>UI/UX Designer – Study Club</b>
+
+    <ul>
+        <li>Membuat rancangan desain UI/UX kreatif dalam kegiatan study club.</li>
+        <li>Mengembangkan ide desain berdasarkan kebutuhan pengguna.</li>
+        <li>Berkolaborasi dengan tim untuk meningkatkan pengalaman pengguna.</li>
+    </ul>
+</div>
         <div class="card">
-            <i class="fas fa-desktop" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-            <b>UI Designer – Aplikasi Desktop & Study Club</b>
-            <ul>
-                <li>Merancang desain antarmuka untuk aplikasi berbasis desktop dan dashboard manajemen data.</li>
-                <li>Membuat rancangan desain UI/UX kreatif melalui kegiatan study club untuk meningkatkan pengalaman pengguna.</li>
-            </ul>
-        </div>
+    <img src="assets/e-blk.png" alt="Web Designer BLK" style="width:100%; border-radius:10px; margin-bottom:15px;">
+
+    <i class="fas fa-code" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+    
+    <b>Web Designer – UPT BLK Nganjuk</b>
+
+    <ul>
+        <li>Membantu developer membangun front-end serta back-end sistem.</li>
+        <li>Mengubah proses seleksi manual menjadi platform digital yang efisien dan terorganisir.</li>
+        <li>Merancang antarmuka website sistem seleksi UPT BLK Nganjuk.</li>
+    </ul>
+
+    <a href="https://pameran-jti.polije.ac.id/product/429/e-blk" 
+       target="_blank" 
+       style="display:inline-block; margin-top:10px; color:#f8c8dc; text-decoration:none;">
+       🔗 Lihat Project
+    </a>
+</div>
         <div class="card">
-            <i class="fas fa-code" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-            <b>Web Designer – UPT BLK Nganjuk</b>
-            <ul>
-                <li>Membantu developer membangun front-end serta back-end sistem.</li>
-                <li>Mengubah proses seleksi manual menjadi platform digital yang efisien dan terorganisir.</li>
-                <li>Merancang antarmuka website sistem seleksi UPT BLK Nganjuk.</li>
-            </ul>
-        </div>
-        <div class="card">
-            <i class="fas fa-bug" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-            <b>Software Tester – SimPelSi</b>
-            <ul>
-                <li>Pengujian fungsionalitas aplikasi pelaporan sampah ilegal untuk mendeteksi bug.</li>
-                <li>Meninjau hasil pengerjaan kelompok lain guna menjaga kualitas dan validitas fitur.</li>
-            </ul>
-        </div>
+    <img src="assets/simpelsi.png" alt="SimPelSi" 
+         style="width:100%; border-radius:10px; margin-bottom:15px;">
+
+    <i class="fas fa-bug" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+
+    <b>Software Tester – SimPelSi</b>
+
+    <ul>
+        <li>Melakukan pengujian fungsionalitas aplikasi pelaporan sampah ilegal untuk mendeteksi bug.</li>
+        <li>Meninjau hasil pengerjaan kelompok lain guna menjaga kualitas dan validitas fitur.</li>
+    </ul>
+</div>
     </div>
 </section>
 
 <section id="organisasi">
-    <h2>Organisasi & Kepemimpinan</h2>
+    <h2>Organisasi</h2>
     
     <div class="card">
-        <b>Ketua Komunitas | Informatics Community Politeknik Negeri Jember PSDKU Nganjuk</b>
-        <ul>
-            <li>Menjadi pemimpin yang mengayomi seluruh anggota dan menjaga kekompakan tim.</li>
-            <li>Memantau kinerja pengurus agar semua tugas dan program kerja selesai tepat waktu.</li>
-            <li>Mengarahkan teman-teman dalam mengelola media sosial dan kegiatan komunitas lainnya.</li>
-            <li>Memastikan suasana organisasi tetap nyaman dan produktif bagi semua anggota.</li>
-        </ul>
-    </div>
+
+    <div class="ig-preview">
+    <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/p/DTNEToIicek/"
+        data-instgrm-version="14">
+    </blockquote>
+</div>
+        <a href="https://www.instagram.com/p/DTNEToIicek/?igsh=NjF1Y2M3MzkwcDln" 
+           target="_blank" 
+           style="color:inherit; text-decoration:none;">
+           Ketua Komunitas | Informatics Community
+        </a>
+    </b>
+
+    <ul>
+        <li>Menjadi pemimpin yang mengayomi seluruh anggota dan menjaga kekompakan tim.</li>
+        <li>Memantau kinerja pengurus agar semua tugas berjalan dengan baik.</li>
+        <li>Mengarahkan anggota dalam kegiatan organisasi dan pengembangan diri.</li>
+    </ul>
+
+</div>
 
     <div class="card" style="margin-top: 20px;">
-        <b>Divisi PSDM Akademik | Informatics Community</b>
-        <p>Berfokus pada peningkatan kapasitas intelektual, potensi akademik, dan pengembangan <i>soft skill</i> anggota organisasi atau mahasiswa.</p>
+
+    <!-- IG PREVIEW PSDM -->
+    <div class="ig-preview">
+        <blockquote class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/p/DSwWd5SiYVR/"
+            data-instgrm-version="14">
+        </blockquote>
     </div>
 
-    <h2 style="margin-top: 60px; font-size: 1.8rem;">Kepanitiaan</h2>
-    <div class="grid">
+    <b>
+        <a href="https://www.instagram.com/p/DSwWd5SiYVR/?igsh=MW05Zm1ibnNpcXI2ZA==" 
+           target="_blank" 
+           style="color:inherit; text-decoration:none;">
+           Divisi PSDM Akademik | Informatics Community
+        </a>
+    </b>
+
+    <p>
+        Berfokus pada peningkatan kapasitas intelektual, potensi akademik, dan pengembangan 
+        <i>soft skill</i> anggota organisasi atau mahasiswa.
+    </p>
+
+</div>
+
+<h2 style="margin-top: 60px; font-size: 1.8rem;">Kepanitiaan</h2>
+<div class="grid">
         <div class="card">
             <b>Sekretaris | Study Club 2025</b>
             <p>Bertanggung jawab atas pengelolaan administrasi organisasi, penyusunan laporan resmi, serta pengarsipan data secara digital yang terintegrasi.</p>
@@ -241,22 +352,19 @@
 
 <script>
     const loveContainer = document.getElementById('love-particles');
-    const heartIcons = ['❤️', '💖', '💝', '💗', '💓']; 
-    
-    for (let i = 0; i < 20; i++) { 
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
-        
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.fontSize = Math.random() * 15 + 15 + 'px'; 
-        heart.style.animationDuration = Math.random() * 10 + 7 + 's'; 
-        heart.style.animationDelay = Math.random() * 10 + 's';
-        
-        loveContainer.appendChild(heart);
-    }
 
-    const text = "Mahasiswi Teknik Informatika";
+for (let i = 0; i < 20; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 6 + 8) + 's';
+    heart.style.animationDelay = Math.random() * 5 + 's';
+
+    loveContainer.appendChild(heart);
+}
+
+    const text = "Mahasiswi Teknik Informatika dengan minat besar di bidang Web Development & UI/UX Designer.";
     let i = 0;
     function type() {
         if (i < text.length) {
